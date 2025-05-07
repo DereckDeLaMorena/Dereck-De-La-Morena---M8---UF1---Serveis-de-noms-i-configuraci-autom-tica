@@ -1,0 +1,13 @@
+# ======================================================
+# 2. CONFIGURACIÓ DE XARXA (LAN - ether2)
+# ======================================================
+
+# Assignar IP a la interfície LAN (ether2)
+/ip address add address=192.168.5.1/24 interface=ether2
+
+# Configurar pool DHCP per a clients LAN
+/ip pool add name=dhcp_pool ranges=192.168.5.100-192.168.5.200
+
+# Activar servidor DHCP a ether2
+/ip dhcp-server add interface=ether2 address-pool=dhcp_pool name=dhcp1
+/ip dhcp-server network add address=192.168.5.0/24 gateway=192.168.5.1 dns-server=8.8.8.8

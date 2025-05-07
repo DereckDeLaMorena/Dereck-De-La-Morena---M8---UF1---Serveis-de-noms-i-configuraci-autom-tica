@@ -1,0 +1,16 @@
+# ======================================================
+# 1. CONFIGURACIÓ BÀSICA
+# ======================================================
+
+# Canviar nom del router
+/system identity set name="Router-Office"
+
+# Desactivar serveis insegurs
+/ip service disable telnet,ftp,www-ssl,api,api-ssl
+
+# Configurar DNS i NTP
+/ip dns set servers=8.8.8.8,1.1.1.1 allow-remote-requests=yes
+/system ntp client set enabled=yes primary-ntp=pool.ntp.org
+
+# Configurar hus horari (Europa/Madrid)
+/system clock set time-zone-name="Europe/Madrid"

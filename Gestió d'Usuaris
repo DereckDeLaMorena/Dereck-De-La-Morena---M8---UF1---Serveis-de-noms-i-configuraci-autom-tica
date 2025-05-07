@@ -1,0 +1,9 @@
+# ======================================================
+# 6. GESTIÓ D'USUARIS
+# ======================================================
+
+# Eliminar usuari per defecte 'admin'
+/user remove admin
+
+# Crear nou usuari amb contrasenya segura
+/user add name=adminadmin group=full password="contraseñaSegura123"

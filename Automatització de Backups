@@ -1,0 +1,6 @@
+# ======================================================
+# 4. AUTOMATITZACIÓ DE BACKUPS
+# ======================================================
+
+# Backup diari local
+/system scheduler add name="Backup-Diario" interval=1d on-event="/system backup save name=backup-[/system clock get date]" start-time=02:00:00

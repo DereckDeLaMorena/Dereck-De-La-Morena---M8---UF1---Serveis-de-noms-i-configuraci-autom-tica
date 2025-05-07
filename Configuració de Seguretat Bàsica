@@ -1,0 +1,14 @@
+# ======================================================
+# 3. SEGURETAT BÀSICA
+# ======================================================
+
+# Regles de firewall per a WAN (ether1) i LAN (ether2)
+/ip firewall filter add chain=input action=drop connection-state=invalid comment="Bloquear connexions invàlides"
+/ip firewall filter add chain=input action=accept protocol=icmp comment="Permetre ICMP (ping)"
+/ip firewall filter add chain=input action=accept connection-state=established,related
+/ip firewall filter add chain=input action=drop in-interface=ether1 comment="Bloquejar trànsit no autoritzat des de WAN"
+
+# Restringir serveis a la LAN (ether2)
+/ip service set ssh address=192.168.5.0/24
+/ip service set winbox address=192.168.5.0/24
+/tool mac-server set allowed-interface-list=LAN
